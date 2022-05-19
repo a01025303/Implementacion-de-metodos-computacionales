@@ -2,10 +2,8 @@
 Implementation of a Deterministic Finite Automaton which
 Identifies all the token types found in the input string 
 according to the given language.
-
 Return a list of tokens found
 Used to validate input strings
-
 Andreina Sananez | A01024927
 Ana Paula Katsuda | A01025303
 2022-04-08
@@ -40,15 +38,19 @@ Ana Paula Katsuda | A01025303
      
     ;Check if char list is empty -> has reached the end
     (if (empty? chars)
-      ; Check that the final state is in the accept states list -> (member state (dfa-str-accept-states dfa))
-      (if (member state (dfa-str-accept-states dfa)) ; (dfa-str-accept-states dfa) extracting the accept-states from struct dfa
-        (append result (list (list state (list->string element)))) #f) ;if true -> appends the list-pair to the result list
+      ; Check that the final state is in the accept states list 
+      ;-> (member state (dfa-str-accept-states dfa))
+      ; (dfa-str-accept-states dfa) extracting the accept-states from struct dfa
+      (if (member state (dfa-str-accept-states dfa)) 
+        ;if true -> appends the list-pair to the result list
+        (append result (list (list state (list->string element)))) #f) 
         
       ; Recursive loop with the new state and the rest of the list
       ; if the list is not empty
       (let-values
         ; Get the new token found and state by applying the transition function
-        ([(token state) ((dfa-str-transitions dfa) state (car chars))]) ; token, state = transitionFunction(state, first element of char list)
+        ; token, state = transitionFunction(state, first element of char list)
+        ([(token state) ((dfa-str-transitions dfa) state (car chars))]) 
         
 
         ;Recursive call
@@ -56,12 +58,16 @@ Ana Paula Katsuda | A01025303
           state ; state is the new value obtained by the transition function
           (cdr chars) ; the new char list is the last one minus the first element
           
-          ; Update the list of tokens found -> if token is not false then store the pair in the result list
+          ; Update the list of tokens found -> if token is not false then store 
+          ;the pair in the result list
           (if token (append result (list (list token (list->string element)))) result)
 
-          ; If token is true -> evuluate if there is a space to ignore (null) -> else function argument "element" is the first element of chars because its needed for the state change
+          ; If token is true -> evuluate if there is a space to ignore (null) 
+          ; -> else function argument "element" is the first element of chars because 
+          ;its needed for the state change
           ; If token is false -> append the first element in chars in the argument list "element"
-          (if token (if (eq? (car chars) #\space) null (list (car chars))) (append element (list (car chars)))))))))
+          (if token (if (eq? (car chars) #\space) null (list (car chars))) 
+          (append element (list (car chars)))))))))
           
 
 
@@ -216,10 +222,3 @@ Ana Paula Katsuda | A01025303
 
 
 
-
-#|
-- revisar espacios en start
-- hacer condicion para espacios al final
-- que identifique que es un operador y no un signo signo -> start_+3 (_+3) 
-
-|#
