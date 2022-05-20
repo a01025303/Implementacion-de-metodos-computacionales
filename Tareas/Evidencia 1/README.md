@@ -12,7 +12,8 @@ Ana Paula Katsuda, A01025303 <br>
 - `json_example.json`
 
 Para correrlo ejecute el siguiente comando en su terminal estando en dicho directorio.<br>
-`Tfiles.json_html("json_example.json", "index.html")`<br>
+`> iex main.exs`<br>
+`iex(1)> Tfiles.json_html("json_example.json", "index.html")`<br>
 
 Una vez realizado lo anterior,  para visualizar el resaltado de la sintaxis abra el archivo “index.html” en su buscador de preferencia.
 
