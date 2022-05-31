@@ -97,6 +97,7 @@ defmodule Tfiles do
             true -> new_content
         end
     end
+    # Regex tail function for empty line
     defp regex_tail("", new_content), do: new_content
 end
 
