@@ -1,49 +1,26 @@
+# Syntax Highlighter code
+# Andreína Sanánez, A01024927
+# Ana Paula Katsuda, A01025303
+
 defmodule Tfiles do
-#Main function
-    def json_html(in_filename, out_filename) do
-        html =
-        in_filename
-        |> File.stream!()
-        |> Enum.map(&String.split/1)
-        |> Enum.join()
-        |> IO.inspect()
-        date = Date.utc_today()
-
-        #Pre-written html template code
-        final_html = "
-        <!DOCTYPE html>
-            <html>
-            <head>
-                <title>JSON Code</title>
-                <link rel='stylesheet' href='token_colors.css'>
-                <link href='https://fonts.googleapis.com/css2?family
-                =Montserrat&display=swap' rel='stylesheet'>
-            </head>
-            <body>
-                <center><h1>JSON Syntax Highlighter</h1></center>
-                <h3>Date: #{date}</h3>
-                <pre>
-                
-                #{html}
-                </pre>
-            </body>
-            </html>"
-
-        #Write the html index file
-        File.write(out_filename, final_html)
-        #File.write(out_filename, html)
-    end
-
+    # Main function
     def get_token(in_filename, out_filename) do
+        # Save read data in token
         token =
+        # Read in file
         in_filename
+        # Make it a stream
         |> File.stream!()
+        # Turn into string using join
         |> Enum.join()
-        #|> Enum.map(&regex/1)
-        |> IO.inspect()
+        #Inspector to see how file was read
+        #|> IO.inspect()
+
+        # Define current date
         date = Date.utc_today()
+        # Save call to regex function using read file
         final_token = regex(token)
-        #IO.puts(regex(token))
+        # General html text insert with regex data and date
         final_html = "
             <!DOCTYPE html>
                 <html>
@@ -61,10 +38,13 @@ defmodule Tfiles do
                     </pre>
                 </body>
                 </html>"
+        # Write the final html in out file
         File.write(out_filename, final_html)
     end
 
+    # Definition of tail function to evaluate regex
     def regex(line), do: regex_tail(line, "")
+    # Function that matches regex expressions for each token
     defp regex_tail(line, new_content) when line != "" do
         cond do
             # Look for punctuation
@@ -116,7 +96,6 @@ defmodule Tfiles do
                 regex_tail(line, new_content)
             true -> new_content
         end
-        #Regex.run(~r/("\w*")(?=\s*:)/, line)
     end
     defp regex_tail("", new_content), do: new_content
 end
