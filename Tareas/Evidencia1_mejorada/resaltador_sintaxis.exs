@@ -14,7 +14,7 @@ defmodule Tfiles do
         # Turn into string using join
         |> Enum.join()
         #Inspector to see how file was read
-        #|> IO.inspect()
+        |> IO.inspect()
 
         # Define current date
         date = Date.utc_today()
@@ -56,8 +56,8 @@ defmodule Tfiles do
                 regex_tail(line, new_content)
                 
             #Look for object key
-            Regex.match?(~r/^("\w*.*")(?=\s*:)/, line) -> 
-                content = Regex.run(~r/^("\w*.*")(?=\s*:)/, line)
+            Regex.match?(~r/^("[-:\w]*")(?=\s*:)/, line) -> 
+                content = Regex.run(~r/^("[-:\w]*")(?=\s*:)/, line)
                 new_content = "#{new_content}<span class='object-key'>#{hd(content)}</span>"
                 content_length = String.length(hd(content))
                 line = String.slice(line, content_length .. String.length(line))
@@ -97,8 +97,8 @@ defmodule Tfiles do
             true -> new_content
         end
     end
-    # Regex tail function for empty line
     defp regex_tail("", new_content), do: new_content
 end
 
 Tfiles.get_token("example_5.json", "index.html")
+#Tfiles.get_token("out_file_000007.json", "index.html")

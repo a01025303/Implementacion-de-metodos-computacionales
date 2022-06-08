@@ -1,0 +1,51 @@
+body {
+  background-color: #141318;
+  color: Gray;
+}
+
+pre {
+  font-family: Monospace;
+  font-size: 20px;
+}
+
+h1 {
+  font-family: 'Montserrat', sans-serif;;
+  color: white;
+  background-color: #d199edd9;
+  padding: 30px;
+  width: 40%;
+  border-radius: 20px;
+  text-align: center;
+  font-size: 50px;
+}
+
+h3 {
+  color: rgba(241, 241, 241, 0.742);
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  font-size: 25px;
+}
+
+.digit {
+  color: #FFD283;
+}
+
+.string {
+  color: #89C9A5;
+  font-style: italic;
+}
+
+.object-key {
+  color: #E077E4;
+  font-weight: bold;
+}
+
+.reserved-word {
+  font-weight: bold;
+  color: #7FE9F7;
+}
+
+.punctuation {
+  color: #A492EA;
+  font-weight: bold;
+}
