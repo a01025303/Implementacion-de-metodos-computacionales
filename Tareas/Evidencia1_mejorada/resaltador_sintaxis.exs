@@ -3,6 +3,16 @@
 # Ana Paula Katsuda, A01025303
 
 defmodule Tfiles do
+    def stream(in_filename, out_filename) do
+        # Save read data in token
+        token =
+        # Read in file
+        in_filename
+        # Make it a stream
+        |> File.stream!()
+        |> Enum.map(&String.trim/1)
+        |> IO.inspect()
+    end
     # Main function
     def get_token(in_filename, out_filename) do
         # Save read data in token
@@ -11,10 +21,11 @@ defmodule Tfiles do
         in_filename
         # Make it a stream
         |> File.stream!()
+        |> IO.puts()
         # Turn into string using join
-        |> Enum.join()
+        #|> Enum.join()
         #Inspector to see how file was read
-        |> IO.inspect()
+        #|> IO.inspect()
 
         # Define current date
         date = Date.utc_today()
@@ -100,5 +111,6 @@ defmodule Tfiles do
     defp regex_tail("", new_content), do: new_content
 end
 
-Tfiles.get_token("example_5.json", "index.html")
+#Tfiles.get_token("example_5.json", "index.html")
+Tfiles.stream("example_5.json", "index.html")
 #Tfiles.get_token("out_file_000007.json", "index.html")
