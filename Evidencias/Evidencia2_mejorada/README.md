@@ -18,11 +18,12 @@ Para utilizar el código anterior, en el mismo directorio se deben de contar pri
 - out_file_000007.json
 
 Para correr el programa de forma correcta, ejecute el siguiente comando en su terminal estando en dicho directorio.
-_> iex main2.exs_
+
+    > iex main2.exs 
 
 Una vez estando en el modo interactivo de Elixir, ejecute la siguiente línea para correr la función que realiza el resaltado de sintaxis de numerosos archivos utilizando concurrencia.
 
-	>ParallelHighlighter.parallel_regex(["out_file_000001.json", "out_file_000002.json", "out_file_000003.json"])
+	> ParallelHighlighter.parallel_regex(["out_file_000001.json", "out_file_000002.json", "out_file_000003.json"])
 Finalmente,  para visualizar el resaltado de la sintaxis abra los diversos archivos _“index{num}.html”_ generados por cada json en su buscador de preferencia.
 
 ## Análisis de la solución
