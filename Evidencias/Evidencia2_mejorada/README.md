@@ -35,9 +35,9 @@ En el presente reporte se describe y analiza a profundidad la solución implemen
 - _Palabras reservadas_: se resaltan palabras reservadas como true, false, null.
 	
 Es relevante recalcar, que al ser paralelo, es posible hacer el mencionado análisis de sintaxis para distintos archivos al mismo tiempo. El presente código, consta de tres procesos principales traducidos en las siguientes funciones: 
-- _get_token_parallel_: esta función lee un archivo a manera de “stream”, aplica el reconocimiento de expresiones regulares para cada línea (dado el “stream”) y lo convierte en un “string” que se inserta en el html correspondiente. 
-- _regex_: esta función se encarga de hacer las evaluaciones de expresiones regulares y agregar el contenido en formato html de manera recursiva para cada expresión encontrada. 
-- _parallel_regex_: esta función se usa para hacer el proceso de resaltar sintaxis de manera paralela utilizando el mismo número de “threads” que corresponden al tamaño de la lista de archivos seleccionada.
+- `_get_token_parallel_`: esta función lee un archivo a manera de “stream”, aplica el reconocimiento de expresiones regulares para cada línea (dado el “stream”) y lo convierte en un “string” que se inserta en el html correspondiente. 
+-` _regex_`: esta función se encarga de hacer las evaluaciones de expresiones regulares y agregar el contenido en formato html de manera recursiva para cada expresión encontrada. 
+- `_parallel_regex_`: esta función se usa para hacer el proceso de resaltar sintaxis de manera paralela utilizando el mismo número de “threads” que corresponden al tamaño de la lista de archivos seleccionada.
 
 ## Análisis de tiempos
 En cuanto a los tiempos de “speedup”, resulta conveniente explicar que anteriormente se tenía un código altamente ineficiente. Lo anterior no solo fue evidente al tener una complejidad temporal de casi n3 y notar que el código tardaba mucho en arrojar resultados, sino que al analizar la lógica detrás existían muchas áreas de oportunidad. En primer lugar, al utilizar la función “replace()” se estaba modificando directamente el archivo original y las evaluaciones de expresiones regulares se volvían más complejas al agregar notación de “html”. Además, el “string” con el que se estaba trabajando, cada vez se volvía más largo, dificultando cada vez más el proceso que se requería en el código. 
