@@ -36,7 +36,7 @@ En el presente reporte se describe y analiza a profundidad la solución implemen
 	
 Es relevante recalcar, que al ser paralelo, es posible hacer el mencionado análisis de sintaxis para distintos archivos al mismo tiempo. El presente código, consta de tres procesos principales traducidos en las siguientes funciones: 
 - `_get_token_parallel_`: esta función lee un archivo a manera de “stream”, aplica el reconocimiento de expresiones regulares para cada línea (dado el “stream”) y lo convierte en un “string” que se inserta en el html correspondiente. 
--` _regex_`: esta función se encarga de hacer las evaluaciones de expresiones regulares y agregar el contenido en formato html de manera recursiva para cada expresión encontrada. 
+- ` _regex_`: esta función se encarga de hacer las evaluaciones de expresiones regulares y agregar el contenido en formato html de manera recursiva para cada expresión encontrada. 
 - `_parallel_regex_`: esta función se usa para hacer el proceso de resaltar sintaxis de manera paralela utilizando el mismo número de “threads” que corresponden al tamaño de la lista de archivos seleccionada.
 
 ## Análisis de tiempos
